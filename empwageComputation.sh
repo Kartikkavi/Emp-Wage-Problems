@@ -1,11 +1,12 @@
 #!/bin/bash -x
-ispresent=1
-randomCheck=$((RANDOM%2))
 
-if
-	[$ispresent -eq $randomcheck]
+empCheck=$((RANDOM%2))
+ispresent=1
+if [ $empCheck -eq $ispresent ]
 then
-echo "Employee is present"
-else
-echo "Employee is absent"
+empRatePerHr=20
+empHrs=8
+salary=$(($empHrs*$empRatePerHr))
+else 
+salary=0
 fi
