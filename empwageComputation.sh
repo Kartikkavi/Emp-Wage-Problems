@@ -1,18 +1,39 @@
-#!/bin/bash -x
-ispartTime=1
-isfullTime=2
-empRatePerHr=20
-empcheck=$((RANDOM%3))
+#!/bin/bash
 
-case $empcheck in
-		$isfullTime)
-			empHr=8
-;;
-		$ispartTime)
-		empHr=4
-;;
-*)
-		empHr=0
-;;
+IS_PART_TIME=1;
+IS_FULL_TIME=2;
+MAX_HRS_IN_MONTH=4;
+EMP_RATE_PER_HR=20;
+NUM_WORKING_DAYS=20;
+
+totalEmpHr=0;
+totalWorkingDays=0;
+
+function getWorkingHours(){
+     case $1 in
+         $IS_FULL_TIME)
+          workHours=8
+                   ;;
+        $IS_PART_TIME)
+             workHours=4
+                   ;;
+      *)
+  workHours=0
+      ;;
 esac
-salary=$(($empHr*$empRatePerHr))
+echo $workHours
+}
+
+while [[ $totalWorkHours -lt $MAX_HRS_IN_MONTH && $totalWorkingDays -lt $NUM_WORKING_DAYS ]] 
+do
+  (( totalWorkingDays++ ))
+        workHours=$( getWorkingHours $((RANDOM%3)) )
+        totalWorkHours=$(($totalWorkHours+$workHours))
+
+ done
+
+totalSalary=$(($totalWorkHours*$EMP_RATE_PER_HR));
+
+echo "salary of an Employee= "$totalSalary
+
+
