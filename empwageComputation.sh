@@ -26,7 +26,7 @@ echo $workHours
 
 function calcDailyWage(){
           local workHrs=$1
-           wage=$(($workHrs+$EMP_RATE_PER_HR))
+           wage=$(($workHrs*$EMP_RATE_PER_HR))
            echo $wage
 }
 
